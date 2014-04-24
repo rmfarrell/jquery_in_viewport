@@ -1,0 +1,68 @@
+<!DOCTYPE HMTL>
+<html>
+	<style>
+		
+		body {
+			background: #333 none;
+		}
+	
+		.test-item {
+			display: block;
+			width: 350px;
+			margin: 4em auto;
+			box-shadow: 0 4px 12px #000;
+			border: 8px solid #fff;
+			border-radius: 25px;
+	    transition: all .4s ease-in;
+		}
+		
+		.test-item.myEffinClass {
+		border: 8px solid purple;
+		}
+		
+	</style>
+	<body>
+		<img src="birds-with-arms/bird-with-arms-12.jpg" class="test-item" />
+		<img src="birds-with-arms/bird-with-arms-17.jpg" class="test-item" />
+		<img src="birds-with-arms/birds-with-arms-02.jpg" class="test-item" />
+		<img src="birds-with-arms/birds-with-arms.jpg" class="test-item" />
+		<img src="birds-with-arms/birds_with_arms.jpg" class="test-item" />
+		<img src="birds-with-arms/birds_with_arms99994.jpg" class="test-item" />
+		<img src="birds-with-arms/birds_with_arms99995.jpg" class="test-item" />
+		<img src="birds-with-arms/n-BIRDS-WITH-ARMS-large570.jpg" class="test-item" />
+		<img src="birds-with-arms/tumblr_m6m8do4Ry01qdvlj7o1_500.png" class="test-item"  />
+		<img src="birds-with-arms/tumblr_mfjr1jbsyT1r25uk8o1_1280.jpg" class="test-item" />
+		<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+		<script src="jquery_in_viewport.js"></script>
+		<script>
+			
+			$(document).ready(function() {
+				
+				//This is passed into the plugin so the class isn't
+				//added when the element comes into view, but rather
+				//after it passes these thresholds expressed as 
+				//percentages. Default is no padding
+				//Make sure your top/bottom; left/right pairs don't exceed 100
+				//Default for all values is 0
+				var windowPadding = {
+					top: 30, //This is a percentage of the viewport. "%" is implicit.
+					bottom: 50
+				}
+				
+				//Plugin checks wheter element is in the viewport - padding and returns boolean
+				//This Method returns a boolean and so, cannot be chained :(
+				var elInView = $('.test-item').inViewport(windowPadding);
+				console.log(elInView);
+				
+				//Second parameter automatically toggles custom class based on its presence or not in the
+				//viewport - padding. If this is not specified default class is 'in-view'
+				$('.test-item').inViewport(windowPadding, 'myEffinClass');
+
+				$(window).scroll(function() {
+					
+					$('.test-item').inViewport(windowPadding, 'myEffinClass');
+				})
+			})
+		</script>
+	</body>
+</html>
